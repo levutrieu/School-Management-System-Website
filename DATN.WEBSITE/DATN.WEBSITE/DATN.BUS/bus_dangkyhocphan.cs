@@ -570,5 +570,123 @@ namespace DATN.BUS
             {
                 throw err;
             }
-        }}
+        }
+
+        public DataTable GetHocKyNamHoc()
+        {
+            try
+            {
+                DataTable dt = null;
+                var hockynamhoc = from hkht in db.tbl_NAMHOC_HKY_HTAIs
+                                  join nhht in db.tbl_NAMHOC_HIENTAIs on
+                                      new { ID_NAMHOC_HIENTAI = Convert.ToInt32(hkht.ID_NAMHOC_HIENTAI) } equals
+                                      new { ID_NAMHOC_HIENTAI = nhht.ID_NAMHOC_HIENTAI }
+                                  where
+                                      nhht.IS_HIENTAI == 1
+                                  select new
+                                  {
+                                      hkht.ID_NAMHOC_HKY_HTAI,
+                                      TEN_HOKY_NH =
+                                          ("Học kỳ " + "" + Convert.ToString(hkht.HOCKY) + " " + "Năm " +
+                                           Convert.ToString(nhht.NAMHOC_TU) + " - " + Convert.ToString(nhht.NAMHOC_DEN))
+                                  };
+                dt = TableUtil.LinqToDataTable(hockynamhoc);
+                return dt;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+
+        public DataTable GetNgay_SoTuan()
+        {
+            try
+            {
+                DataTable dt = null;
+                var NgayTuan = from nhht in db.tbl_NAMHOC_HIENTAIs
+                               where
+                                   (nhht.IS_DELETE != 1 ||
+                                    nhht.IS_DELETE == null) &&
+                                   nhht.IS_HIENTAI == 1
+                               select new
+                               {
+                                   nhht.NGAY_BATDAU,
+                                   nhht.SO_TUAN
+                               };
+                dt = TableUtil.LinqToDataTable(NgayTuan);
+
+                return dt;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+
+        public int GetHocKy(int id_hocky_htai)
+        {
+            try
+            {
+                var hocky = (from hk in db.tbl_NAMHOC_HKY_HTAIs
+                             where hk.ID_NAMHOC_HKY_HTAI == id_hocky_htai
+                             select new { hk.HOCKY }).First().HOCKY.ToString();
+                return Convert.ToInt32(hocky.ToString());
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+
+        public DataTable GetTKB(int id_hocky_hientai, int id_sinhvien, int tuan)
+        {
+            try
+            {
+                DataTable dt = null;
+                var tkb = from dkhp in db.tbl_HP_DANGKies
+                          join hp in db.tbl_LOP_HOCPHANs on new { ID_LOPHOCPHAN = Convert.ToInt32(dkhp.ID_LOPHOCPHAN) } equals new { ID_LOPHOCPHAN = hp.ID_LOPHOCPHAN }
+                          join hpct in db.tbl_LOP_HOCPHAN_CTs on new { ID_LOPHOCPHAN = hp.ID_LOPHOCPHAN } equals new { ID_LOPHOCPHAN = Convert.ToInt32(hpct.ID_LOPHOCPHAN) }
+                          join mh in db.tbl_MONHOCs on new { ID_MONHOC = Convert.ToInt32(hp.ID_MONHOC) } equals new { ID_MONHOC = mh.ID_MONHOC }
+                          join p in db.tbl_PHONGHOCs on new { ID_PHONG = Convert.ToInt32(hpct.ID_PHONG) } equals new { ID_PHONG = p.ID_PHONG }
+                          join gv in db.tbl_GIANGVIENs on new { ID_GIANGVIEN = Convert.ToInt32(hp.ID_GIANGVIEN) } equals new { ID_GIANGVIEN = gv.ID_GIANGVIEN }
+                          where
+                            (dkhp.IS_DELETE != 1 ||
+                            dkhp.IS_DELETE == null) &&
+                            (hp.IS_DELETE != 1 ||
+                            hp.IS_DELETE == null) &&
+                            (hpct.IS_DELETE != 1 ||
+                            hpct.IS_DELETE == null) &&
+                            (mh.IS_DELETE != 1 ||
+                            mh.IS_DELETE == null) &&
+                            (p.IS_DELETE != 1 ||
+                            p.IS_DELETE == null) &&
+                            (gv.IS_DELETE != 1 ||
+                            p.IS_DELETE == null) &&
+                            dkhp.ID_SINHVIEN == id_sinhvien &&
+                            hp.ID_NAMHOC_HKY_HTAI == id_hocky_hientai &&
+                            tuan >= hp.TUAN_BD && tuan <= hp.TUAN_KT
+                          select new
+                          {
+                              hp.TEN_LOP_HOCPHAN,hp.ID_LOPHOCPHAN,
+                              SOTIET = hpct.SO_TIET,
+                              hp.MA_LOP_HOCPHAN,
+                              hp.TUAN_BD,
+                              hp.TUAN_KT,
+                              hpct.THU,
+                              hpct.TIET_BD,
+                              hpct.TIET_KT,
+                              p.TEN_PHONG,
+                              gv.TEN_GIANGVIEN,
+                              mh.TEN_MONHOC
+                          };
+                dt = TableUtil.LinqToDataTable(tkb);
+                return dt;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+    }
 }

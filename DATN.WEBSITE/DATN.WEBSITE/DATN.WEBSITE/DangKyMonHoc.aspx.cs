@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Services.Description;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using DATN.BUS;
 using DevExpress.Web;
@@ -22,8 +24,8 @@ namespace DATN.WEBSITE
         private DataTable iGridDataSourceDK = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["MA_SINHVIEN"] = "2001120021";
-            Session["ID_SINHVIEN"] = 18;
+            //Session["MA_SINHVIEN"] = "2001120021";
+            //Session["ID_SINHVIEN"] = 1;
             if (!IsPostBack && !IsCallback)
             {
                 if (Session["ID_SINHVIEN"] == null)
@@ -191,10 +193,20 @@ namespace DATN.WEBSITE
             }
             return xdt;
         }
-
+        bool KiemTraCheck1(DataTable dt, int lophocphan)
+        {
+            foreach (DataRow r in dt.Rows)
+            {
+                if (Convert.ToInt32(r["ID_LOPHOCPHAN"].ToString()) == lophocphan)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         protected void chkChon_OnCheckedChanged(object sender, EventArgs e)
         {
-            iGridDataSourceDK = (DataTable) ViewState["iGridDataSourceDK"];
+            iGridDataSourceDK = (DataTable)ViewState["iGridDataSourceDK"];
             if (iGridDataSourceDK == null || iGridDataSourceDK.Rows.Count == 0)
             {
                 CreateDataTable();
@@ -207,31 +219,45 @@ namespace DATN.WEBSITE
                     CheckBox chon = (row.Cells[0].FindControl("chkChon") as CheckBox);
                     if (chon.Checked)
                     {
-                        DataTable dt = KiemTraCheck(iGridDataSourceDK,Convert.ToInt32((row.Cells[1].FindControl("txtID_LopHocPhan") as Label).Text));
-                        r["ID_DANGKY"] = "0";
-                        r["ID_SINHVIEN"] = Session["ID_SINHVIEN"];
-                        r["ID_THAMSO"] = "0";
-                        r["ID_LOPHOCPHAN"] = (row.Cells[1].FindControl("txtID_LopHocPhan") as Label).Text;
-                        r["MA_MONHOC"] = (row.Cells[2].FindControl("txtMaMonHoc") as Label).Text;
-                        r["TEN_MONHOC"] = (row.Cells[3].FindControl("txtTenMonHoc") as Label).Text;
-                        r["SO_TC"] = (row.Cells[4].FindControl("txtSTC") as Label).Text;
-                        r["NGAY_DANGKY"] = DateTime.Now.ToShortDateString();
-                        r["DON_GIA"] = 220;
-                        r["THANH_TIEN"] = (double)(Convert.ToDouble(r["SO_TC"]) * Convert.ToDouble(r["DON_GIA"]));
-                        r["TRANGTHAI"] = "Chưa lưu";
-                        iGridDataSourceDK.Rows.Add(r);
-                        iGridDataSourceDK.AcceptChanges();
+
+                        //cái dt này có tác dụng gì v e
+                        // là danh sách các dòng dữ liệu, mà nó ko có trùng nhưng hàm này e chưa làm tới. mới làm tới đây các bí luôn đó a.
+                        // Tại a thấy cái dt không có tác dụng
+                        //Để a sửa code thử nha. Tại a cũng k rành aspx lắm. sơ sơ thui :D
+                        // ok a.
+                        //DataTable dt = KiemTraCheck(iGridDataSourceDK, Convert.ToInt32((row.Cells[1].FindControl("txtID_LopHocPhan") as Label).Text));
+                        //để e copy code ra ngoài cái. viết mấy bữa rồi giờ sợ quên :D
+                        // ok. a sửa giúp e nha. ok ông 
+                        // a muốn làm gì
+                        bool isCheck=KiemTraCheck1(iGridDataSourceDK, Int32.Parse((row.Cells[1].FindControl("txtID_LopHocPhan") as Label).Text));
+                        if (!isCheck)
+                        {
+                            r["ID_DANGKY"] = "0";
+                            r["ID_SINHVIEN"] = Session["ID_SINHVIEN"];
+                            r["ID_THAMSO"] = "0";
+                            r["ID_LOPHOCPHAN"] = (row.Cells[1].FindControl("txtID_LopHocPhan") as Label).Text;
+                            r["MA_MONHOC"] = (row.Cells[2].FindControl("txtMaMonHoc") as Label).Text;
+                            r["TEN_MONHOC"] = (row.Cells[3].FindControl("txtTenMonHoc") as Label).Text;
+                            r["SO_TC"] = (row.Cells[4].FindControl("txtSTC") as Label).Text;
+                            r["NGAY_DANGKY"] = DateTime.Now.ToShortDateString();
+                            r["DON_GIA"] = 220;
+                            r["THANH_TIEN"] = (double)(Convert.ToDouble(r["SO_TC"]) * Convert.ToDouble(r["DON_GIA"]));
+                            r["TRANGTHAI"] = "Chưa lưu";
+                            iGridDataSourceDK.Rows.Add(r);
+                            iGridDataSourceDK.AcceptChanges();
+                        }
                     }
                 }
             }
-            
+            DataTable dt = iGridDataSourceDK.AsEnumerable().GroupBy(t => t.Field<string>("MA_MONHOC")).Select(x => x.FirstOrDefault()).CopyToDataTable();
+            iGridDataSourceDK = dt.Copy();
             grdViewDanhSachDaDangKy.DataSource = iGridDataSourceDK;
             grdViewDanhSachDaDangKy.DataBind();
         }
 
         protected void btnHuyDangKy_OnClick(object sender, EventArgs e)
         {
-            DataTable dt = iGridDataSoure;
+            
          }
 
         protected void grdViewDanhSachDaDangKy_DataBinding(object sender, EventArgs e)
@@ -256,5 +282,12 @@ namespace DATN.WEBSITE
         {
             
         }
+
+        protected void grdDanhSachLopHP_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = (GridViewRow)grdDanhSachLopHP.SelectedRow;
+        }
+
+       
     }
 }

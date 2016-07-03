@@ -99,5 +99,26 @@ namespace DATN.BUS
             }
         }
 
+        public int GetID_SinhVien(string pMA_SINHVIEN)
+        {
+            try
+            {
+                int res = 0;
+                var firstOrDefault = (from sv in db.tbL_SINHVIENs
+                    where (sv.IS_DELETE != 1 || sv.IS_DELETE == null) && sv.MA_SINHVIEN.Trim() == pMA_SINHVIEN.Trim()
+                    select new {sv.ID_SINHVIEN}).First().ID_SINHVIEN;
+                if (firstOrDefault != null)
+                {
+                    var getId_SinhVien = firstOrDefault;
+                    res = Convert.ToInt32(getId_SinhVien);
+                }
+                return res;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+
     }
 }

@@ -45,6 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sinhvien.cs" />
     <Compile Include="TableUtil.cs" />
+    <Compile Include="ThoiKhoaBieu.cs" />
     <Compile Include="UserCommon.cs" />
   </ItemGroup>
   <ItemGroup>

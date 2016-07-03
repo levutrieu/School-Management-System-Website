@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Defautl.master.cs" Inherits="DATN.WEBSITE.Defautl" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 
 <!DOCTYPE html>
 
@@ -15,7 +16,15 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href="css/default.css" rel="stylesheet" type="text/css" />
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-</head>
+     <script type="text/javascript">
+         function ShowLoginWindow() {
+             pcLogin.Show();
+         }
+         function ShowCreateAccountWindow() {
+             pcCreateAccount.Show();
+             tbUsername.Focus();
+         }
+    </script></head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
     <form id="form1" runat="server">
 
@@ -41,12 +50,106 @@
                             <li><a href="XemDiemSinhVien.aspx">Xem điểm</a></li>
                             <li><a href="XemHocPhi.aspx">Xem học phí</a></li>
                             <li><a href="XemThongTinCaNhan.aspx">Thông tin cá nhân</a></li>
-                            <li><a href="LogIn.aspx">Đăng nhập</a></li></ul>
+                            <li>
+                                <a>
+                                    <dx:ASPxButton ID="btShowModal" runat="server" Text="Đăng nhập" AutoPostBack="False" UseSubmitBehavior="false" Width="100%">
+                                        <ClientSideEvents Click="function(s, e) { ShowLoginWindow(); }" />
+                                    </dx:ASPxButton>
+                                </a>
+                            </li></ul>
                     </div>
                 <!-- /.navbar-collapse -->
             </div>
             <!-- /.container -->
         </nav>
+         <div>
+                 <dx:ASPxPopupControl ID="pcLogin" runat="server" CloseAction="CloseButton" CloseOnEscape="true" Modal="True"
+            PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ClientInstanceName="pcLogin"
+            HeaderText="Login" AllowDragging="True" PopupAnimationType="None" EnableViewState="False">
+            <ClientSideEvents PopUp="function(s, e) { ASPxClientEdit.ClearGroup('entryGroup'); tbLogin.Focus(); }" />
+            <ContentCollection>
+                <dx:PopupControlContentControl runat="server">
+                    <dx:ASPxPanel ID="Panel1" runat="server" DefaultButton="btOK">
+                        <PanelCollection>
+                            <dx:PanelContent runat="server">
+                                <table>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <div class="pcmSideSpacer">
+                                            </div>
+                                        </td>
+                                        <td class="pcmCellCaption">
+                                            <dx:ASPxLabel ID="lblUsername1" runat="server" Text="Username:" AssociatedControlID="tbLogin">
+                                            </dx:ASPxLabel>
+                                        </td>
+                                        <td class="pcmCellText">
+                                            <dx:ASPxTextBox ID="tbLogin" runat="server" Width="150px" ClientInstanceName="tbLogin">
+                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="entryGroup" SetFocusOnError="True"
+                                                    ErrorDisplayMode="Text" ErrorTextPosition="Bottom" CausesValidation="True">
+                                                    <RequiredField ErrorText="Username required" IsRequired="True" />
+                                                    <RegularExpression ErrorText="Login required" />
+                                                    <ErrorFrameStyle Font-Size="10px">
+                                                        <ErrorTextPaddings PaddingLeft="0px" />
+                                                    </ErrorFrameStyle>
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td rowspan="4">
+                                            <div class="pcmSideSpacer">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pcmCellCaption">
+                                            <dx:ASPxLabel ID="lblPass1" runat="server" Text="Password:" AssociatedControlID="tbPassword">
+                                            </dx:ASPxLabel>
+                                        </td>
+                                        <td class="pcmCellText">
+                                            <dx:ASPxTextBox ID="tbPassword" runat="server" Width="150px" Password="True">
+                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="entryGroup" SetFocusOnError="True"
+                                                    ErrorDisplayMode="Text" ErrorTextPosition="Bottom">
+                                                    <RequiredField ErrorText="Password required" IsRequired="True" />
+                                                    <ErrorFrameStyle Font-Size="10px">
+                                                        <ErrorTextPaddings PaddingLeft="0px" />
+                                                    </ErrorFrameStyle>
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="pcmCheckBox">
+                                            <dx:ASPxCheckBox ID="chbRemember" runat="server" Text="Remember me">
+                                            </dx:ASPxCheckBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="pcmButton">
+                                                <dx:ASPxButton ID="btOK" runat="server" Text="OK" Width="80px" AutoPostBack="False" Style="float: left; margin-right: 8px">
+                                                    <ClientSideEvents Click="function(s, e) { if(ASPxClientEdit.ValidateGroup('entryGroup')) pcLogin.Hide(); }" />
+                                                </dx:ASPxButton>
+                                                <dx:ASPxButton ID="btCancel" runat="server" Text="Cancel" Width="80px" AutoPostBack="False" Style="float: left; margin-right: 8px">
+                                                    <ClientSideEvents Click="function(s, e) { pcLogin.Hide(); }" />
+                                                </dx:ASPxButton>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxPanel>
+                    <div>
+                        <a href="javascript:ShowCreateAccountWindow();" id="hl1" style="float: right; margin: 14px 0 10px 0;">Create Account</a>
+                    </div>
+                </dx:PopupControlContentControl>
+            </ContentCollection>
+            <ContentStyle>
+                <Paddings PaddingBottom="5px" />
+            </ContentStyle>
+        </dx:ASPxPopupControl>
+
+            </div>
         <!-- Section: intro -->
         <section id="intro" class="intro" style="font-family: Time New Roman">
 

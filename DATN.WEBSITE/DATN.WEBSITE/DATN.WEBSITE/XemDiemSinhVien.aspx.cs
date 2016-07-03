@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using DATN.BUS;
 using DevExpress.Web;
@@ -271,20 +272,47 @@ namespace DATN.WEBSITE
         {
             if (Session["ID_SINHVIEN"] == null)
             {
-                Response.Write("Vui lòng đăng nhập để xem kết quả!!");
-                Response.Redirect("LogIn.aspx");
+                groupinfo.Visible = false;
             }
             else
             {
                 LoadDiemToGrid(Convert.ToInt32(Session["ID_SINHVIEN"]));
                 iDataSoure = dangnhap.GetThongTinSinhVien(Convert.ToInt32(Session["ID_SINHVIEN"]));
+                ViewState["iDataSoure"] = iDataSoure;
                 txtMaSinhVien.Text = iDataSoure.Rows[0]["MA_SINHVIEN"].ToString();
                 txtTenSinhVien.Text = iDataSoure.Rows[0]["TEN_SINHVIEN"].ToString();
                 txtLop.Text = iDataSoure.Rows[0]["TEN_LOP"].ToString();
                 txtNganh.Text = iDataSoure.Rows[0]["TEN_NGANH"].ToString();
                 txtHeDaoTao.Text = iDataSoure.Rows[0]["TEN_HE_DAOTAO"].ToString();
                 txtNienKhoa.Text = iDataSoure.Rows[0]["KHOAHOC"].ToString();
+
+                groupnhapthongtin.Visible = false;
+                groupinfo.Visible = true;
             }
         }
+
+        protected void btnXemDiem_OnClick_OnClick(object sender, EventArgs e){
+            bus_dangnhap dangnhap = new bus_dangnhap();
+            if (string.IsNullOrEmpty(textmasv.Text))
+            {
+                
+            }
+            Session["ID_SINHVIEN"] = dangnhap.GetID_SinhVien(textmasv.Text.Trim());
+            DataTable iDataSoure = dangnhap.GetThongTinSinhVien(Convert.ToInt32(Session["ID_SINHVIEN"]));
+            if (iDataSoure.Rows.Count > 0)
+            {
+                ViewState["iDataSoure"] = iDataSoure;
+                txtMaSinhVien.Text = iDataSoure.Rows[0]["MA_SINHVIEN"].ToString();
+                txtTenSinhVien.Text = iDataSoure.Rows[0]["TEN_SINHVIEN"].ToString();
+                txtLop.Text = iDataSoure.Rows[0]["TEN_LOP"].ToString();
+                txtNganh.Text = iDataSoure.Rows[0]["TEN_NGANH"].ToString();
+                txtHeDaoTao.Text = iDataSoure.Rows[0]["TEN_HE_DAOTAO"].ToString();
+                txtNienKhoa.Text = iDataSoure.Rows[0]["KHOAHOC"].ToString();
+                LoadDiemToGrid(Convert.ToInt32(Session["ID_SINHVIEN"]));groupinfo.Visible = true;
+                groupinfo.Visible = true;
+                groupnhapthongtin.Visible = false;
+            }
+        }
+        
     }
 }

@@ -13,6 +13,42 @@ namespace DATN.WEBSITE {
     public partial class XemDiemSinhVien {
         
         /// <summary>
+        /// groupnhapthongtin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel groupnhapthongtin;
+        
+        /// <summary>
+        /// textmasv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox textmasv;
+        
+        /// <summary>
+        /// btnXemDiem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnXemDiem;
+        
+        /// <summary>
+        /// groupinfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel groupinfo;
+        
+        /// <summary>
         /// txtMaSinhVien control.
         /// </summary>
         /// <remarks>

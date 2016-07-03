@@ -69,7 +69,9 @@
     </table>
     <div style="height: 10px"></div>
     <div runat="server" style="font-family: Time New Roman; height: 250px; margin-left: 50px; margin-right: 50px; overflow: auto">
-        <asp:GridView ID="grdDanhSachLopHP" runat="server" AutoGenerateColumns="false" CssClass="grid" ShowHeader="True" OnRowDataBound="grdDanhSachLopHP_OnRowDataBound">
+        <asp:GridView ID="grdDanhSachLopHP" runat="server" AutoGenerateColumns="false" CssClass="grid" ShowHeader="True" 
+            OnSelectedIndexChanged="grdDanhSachLopHP_OnSelectedIndexChanged"
+            OnRowDataBound="grdDanhSachLopHP_OnRowDataBound">
             <Columns>
                 <asp:TemplateField HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle" ItemStyle-Width="5%" HeaderText="Chọn" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>

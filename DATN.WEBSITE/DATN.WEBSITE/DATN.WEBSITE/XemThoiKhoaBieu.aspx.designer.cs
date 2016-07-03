@@ -13,6 +13,42 @@ namespace DATN.WEBSITE {
     public partial class XemThoiKhoaBieu {
         
         /// <summary>
+        /// groupnhapthongtin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel groupnhapthongtin;
+        
+        /// <summary>
+        /// textmasv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox textmasv;
+        
+        /// <summary>
+        /// btnXemThoiKhoaBieu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnXemThoiKhoaBieu;
+        
+        /// <summary>
+        /// groupinfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel groupinfo;
+        
+        /// <summary>
         /// txtMaSinhVien control.
         /// </summary>
         /// <remarks>
@@ -65,5 +101,41 @@ namespace DATN.WEBSITE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxLabel txtNienKhoa;
+        
+        /// <summary>
+        /// grouploc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel grouploc;
+        
+        /// <summary>
+        /// cboHocKy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cboHocKy;
+        
+        /// <summary>
+        /// cboTuan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cboTuan;
+        
+        /// <summary>
+        /// thoikhoabieu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel thoikhoabieu;
     }
 }

@@ -27,7 +27,7 @@ namespace DATN.WEBSITE
             if (res == 1)
             {
                 Session["ID_SINHVIEN"] = UserCommon.IdSinhVien;
-                Response.Redirect("DangKyMonHoc.aspx");
+                Response.Redirect("TrangChu.aspx");
             }
             else
             {
