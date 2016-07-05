@@ -51,10 +51,8 @@
                             <li><a href="XemHocPhi.aspx">Xem học phí</a></li>
                             <li><a href="XemThongTinCaNhan.aspx">Thông tin cá nhân</a></li>
                             <li>
-                                <a>
-                                    <dx:ASPxButton ID="btShowModal" runat="server" Text="Đăng nhập" AutoPostBack="False" UseSubmitBehavior="false" Width="100%">
-                                        <ClientSideEvents Click="function(s, e) { ShowLoginWindow(); }" />
-                                    </dx:ASPxButton>
+                                <a onclick="btnDangNhap_OnClicknClick">
+                                    <asp:Label ID="txtLogIN" runat="server" Text="Đăng nhập"></asp:Label>
                                 </a>
                             </li></ul>
                     </div>

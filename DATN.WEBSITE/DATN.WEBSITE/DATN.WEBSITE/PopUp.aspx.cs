@@ -19,7 +19,10 @@ namespace DATN.WEBSITE
         
         protected void ButtonSend_OnClicknd_Click(object sender, EventArgs e)
         {
-            
-        }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);}
+
+        protected void btnDangNhap_OnClickOnClick(object sender, EventArgs e)
+        {
+            }
     }
 }

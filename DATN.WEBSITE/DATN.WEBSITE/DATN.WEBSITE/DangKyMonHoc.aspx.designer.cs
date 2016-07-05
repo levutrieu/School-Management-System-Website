@@ -13,13 +13,22 @@ namespace DATN.WEBSITE {
     public partial class DangKyMonHoc {
         
         /// <summary>
-        /// lblKhoahoc control.
+        /// paneInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel lblKhoahoc;
+        protected global::System.Web.UI.WebControls.Panel paneInfo;
+        
+        /// <summary>
+        /// ASPxLabel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel ASPxLabel1;
         
         /// <summary>
         /// cboKhoa control.
@@ -40,31 +49,13 @@ namespace DATN.WEBSITE {
         protected global::DevExpress.Web.ASPxLabel lblLopHoc;
         
         /// <summary>
-        /// cboLopHoc control.
+        /// cboNganh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cboLopHoc;
-        
-        /// <summary>
-        /// lblNgayHoc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel lblNgayHoc;
-        
-        /// <summary>
-        /// cboNgayHoc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cboNgayHoc;
+        protected global::DevExpress.Web.ASPxComboBox cboNganh;
         
         /// <summary>
         /// lblMonhoc control.
@@ -85,6 +76,15 @@ namespace DATN.WEBSITE {
         protected global::DevExpress.Web.ASPxComboBox cboMonHoc;
         
         /// <summary>
+        /// paneDSHocPhan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel paneDSHocPhan;
+        
+        /// <summary>
         /// grdDanhSachLopHP control.
         /// </summary>
         /// <remarks>
@@ -92,6 +92,15 @@ namespace DATN.WEBSITE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdDanhSachLopHP;
+        
+        /// <summary>
+        /// paneChucNang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel paneChucNang;
         
         /// <summary>
         /// btnHoTroID3 control.
@@ -130,13 +139,13 @@ namespace DATN.WEBSITE {
         protected global::DevExpress.Web.ASPxButton btnHuyDangKy;
         
         /// <summary>
-        /// btnInPhieuDangKy control.
+        /// paneDSDangKy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnInPhieuDangKy;
+        protected global::System.Web.UI.WebControls.Panel paneDSDangKy;
         
         /// <summary>
         /// grdViewDanhSachDaDangKy control.
@@ -146,5 +155,77 @@ namespace DATN.WEBSITE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdViewDanhSachDaDangKy;
+        
+        /// <summary>
+        /// lblMaSV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel lblMaSV;
+        
+        /// <summary>
+        /// txtMaSinhVien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtMaSinhVien;
+        
+        /// <summary>
+        /// lblMaKhau control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel lblMaKhau;
+        
+        /// <summary>
+        /// txtMaKhau control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtMaKhau;
+        
+        /// <summary>
+        /// btnDangNhap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnDangNhap;
+        
+        /// <summary>
+        /// txtThongbao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel txtThongbao;
+        
+        /// <summary>
+        /// GridThuatToan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridThuatToan;
+        
+        /// <summary>
+        /// ThuatTuanID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView ThuatTuanID;
     }
 }

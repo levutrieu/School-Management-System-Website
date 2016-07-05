@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -20,14 +21,16 @@ namespace DATN.WEBSITE
                 }
             }
         }
-        bus_dangnhap client = new bus_dangnhap();
+        bus_dangnhap dangnhap = new bus_dangnhap();
         protected void btnDangNhap_OnClick(object sender, EventArgs e)
         {
-            int res = client.CheckLogin(txtMaSinhVien.Text, txtMaKhau.Text);
+            int res = dangnhap.CheckLogin(txtMaSinhVien.Text, txtMaKhau.Text);
             if (res == 1)
             {
                 Session["ID_SINHVIEN"] = UserCommon.IdSinhVien;
                 Response.Redirect("TrangChu.aspx");
+                DataTable iDataSoure = dangnhap.GetThongTinSinhVien(Convert.ToInt32(Session["ID_SINHVIEN"]));
+                ViewState["iDataSoure"] = iDataSoure;
             }
             else
             {
