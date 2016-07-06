@@ -120,11 +120,10 @@
   </Table>
   <Table Name="dbo.tbl_HP_CAUHINH_HOCPHI" Member="tbl_HP_CAUHINH_HOCPHIs">
     <Type Name="tbl_HP_CAUHINH_HOCPHI">
-      <Column Name="ID_CAUHINH_HOCPHI" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_CAUHINH_HOCPHI" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ID_HE_DAOTAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HINHTHUC_HOC" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="TU_HOCKY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DEN_HOCKY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IS_LYTHUYET" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_NAMHOC_HKY_HTAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DON_GIA" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="GHI_CHU" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
       <Column Name="CREATE_USER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -169,16 +168,15 @@
       <Column Name="IS_DELETE" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tbl_HP_THAMSO" Member="tbl_HP_THAMSOs">
-    <Type Name="tbl_HP_THAMSO">
-      <Column Name="ID_THAMSO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ID_HOCKY_NAMHOC" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MA_DOT_DK" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TEN_DOT_DK" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NGAY_BDAU" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NGAY_KTHUC" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="GIO_BDAU" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GIO_KTHUC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.tbl_HP_DOTDK" Member="tbl_HP_DOTDKs">
+    <Type Name="tbl_HP_DOTDK">
+      <Column Name="ID_DOTDK" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_NAMHOC_HKY_HTAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_HE_DAOTAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MA_DOT_DK" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TEN_DOT_DK" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NGAY_BDAU" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NGAY_KTHUC" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CREATE_USER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="UPDATE_USER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CREATE_TIME" Type="System.DateTime" DbType="Date" CanBeNull="true" />
@@ -186,10 +184,10 @@
       <Column Name="ISDELETE" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tbl_HP_THAMSO_HPDK" Member="tbl_HP_THAMSO_HPDKs">
-    <Type Name="tbl_HP_THAMSO_HPDK">
-      <Column Name="ID_THAMSO_HOCPHAN" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ID_THAMSO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+  <Table Name="dbo.tbl_HP_DOTDK_CTIET" Member="tbl_HP_DOTDK_CTIETs">
+    <Type Name="tbl_HP_DOTDK_CTIET">
+      <Column Name="ID_DOTDK_CTIET" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_DOTDK" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ID_LOPHOCPHAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CREATE_USER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="UPDATE_USER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

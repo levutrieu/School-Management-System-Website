@@ -1986,12 +1986,14 @@ select[multiple].input-lg {
   right: 15px;
 }
 .btn {
-  display: inline-block;
-  padding: 6px 12px;
+    width: 80px;
+    height: 30px;
+    display: inline-block;
+  padding: 6px 6px;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.428571429;
+  /*line-height: 1.428571429;*/
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -5126,7 +5128,8 @@ button.close {
   margin: 10px;
 }
 .modal-content {
-  position: relative;
+    width: 200px;
+    position: relative;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #999;

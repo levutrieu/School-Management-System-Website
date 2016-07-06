@@ -60,12 +60,12 @@ namespace DATN.DATA
     partial void Inserttbl_HP_DANGKY_HUY(tbl_HP_DANGKY_HUY instance);
     partial void Updatetbl_HP_DANGKY_HUY(tbl_HP_DANGKY_HUY instance);
     partial void Deletetbl_HP_DANGKY_HUY(tbl_HP_DANGKY_HUY instance);
-    partial void Inserttbl_HP_THAMSO(tbl_HP_THAMSO instance);
-    partial void Updatetbl_HP_THAMSO(tbl_HP_THAMSO instance);
-    partial void Deletetbl_HP_THAMSO(tbl_HP_THAMSO instance);
-    partial void Inserttbl_HP_THAMSO_HPDK(tbl_HP_THAMSO_HPDK instance);
-    partial void Updatetbl_HP_THAMSO_HPDK(tbl_HP_THAMSO_HPDK instance);
-    partial void Deletetbl_HP_THAMSO_HPDK(tbl_HP_THAMSO_HPDK instance);
+    partial void Inserttbl_HP_DOTDK(tbl_HP_DOTDK instance);
+    partial void Updatetbl_HP_DOTDK(tbl_HP_DOTDK instance);
+    partial void Deletetbl_HP_DOTDK(tbl_HP_DOTDK instance);
+    partial void Inserttbl_HP_DOTDK_CTIET(tbl_HP_DOTDK_CTIET instance);
+    partial void Updatetbl_HP_DOTDK_CTIET(tbl_HP_DOTDK_CTIET instance);
+    partial void Deletetbl_HP_DOTDK_CTIET(tbl_HP_DOTDK_CTIET instance);
     partial void Inserttbl_KHOA(tbl_KHOA instance);
     partial void Updatetbl_KHOA(tbl_KHOA instance);
     partial void Deletetbl_KHOA(tbl_KHOA instance);
@@ -253,19 +253,19 @@ namespace DATN.DATA
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_HP_THAMSO> tbl_HP_THAMSOs
+		public System.Data.Linq.Table<tbl_HP_DOTDK> tbl_HP_DOTDKs
 		{
 			get
 			{
-				return this.GetTable<tbl_HP_THAMSO>();
+				return this.GetTable<tbl_HP_DOTDK>();
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_HP_THAMSO_HPDK> tbl_HP_THAMSO_HPDKs
+		public System.Data.Linq.Table<tbl_HP_DOTDK_CTIET> tbl_HP_DOTDK_CTIETs
 		{
 			get
 			{
-				return this.GetTable<tbl_HP_THAMSO_HPDK>();
+				return this.GetTable<tbl_HP_DOTDK_CTIET>();
 			}
 		}
 		
@@ -2912,11 +2912,9 @@ namespace DATN.DATA
 		
 		private System.Nullable<int> _ID_HE_DAOTAO;
 		
-		private string _HINHTHUC_HOC;
+		private System.Nullable<int> _IS_LYTHUYET;
 		
-		private string _TU_HOCKY;
-		
-		private string _DEN_HOCKY;
+		private System.Nullable<int> _ID_NAMHOC_HKY_HTAI;
 		
 		private System.Nullable<double> _DON_GIA;
 		
@@ -2940,12 +2938,10 @@ namespace DATN.DATA
     partial void OnID_CAUHINH_HOCPHIChanged();
     partial void OnID_HE_DAOTAOChanging(System.Nullable<int> value);
     partial void OnID_HE_DAOTAOChanged();
-    partial void OnHINHTHUC_HOCChanging(string value);
-    partial void OnHINHTHUC_HOCChanged();
-    partial void OnTU_HOCKYChanging(string value);
-    partial void OnTU_HOCKYChanged();
-    partial void OnDEN_HOCKYChanging(string value);
-    partial void OnDEN_HOCKYChanged();
+    partial void OnIS_LYTHUYETChanging(System.Nullable<int> value);
+    partial void OnIS_LYTHUYETChanged();
+    partial void OnID_NAMHOC_HKY_HTAIChanging(System.Nullable<int> value);
+    partial void OnID_NAMHOC_HKY_HTAIChanged();
     partial void OnDON_GIAChanging(System.Nullable<double> value);
     partial void OnDON_GIAChanged();
     partial void OnGHI_CHUChanging(string value);
@@ -2967,7 +2963,7 @@ namespace DATN.DATA
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CAUHINH_HOCPHI", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CAUHINH_HOCPHI", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_CAUHINH_HOCPHI
 		{
 			get
@@ -3007,62 +3003,42 @@ namespace DATN.DATA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HINHTHUC_HOC", DbType="Char(2)")]
-		public string HINHTHUC_HOC
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IS_LYTHUYET", DbType="Int")]
+		public System.Nullable<int> IS_LYTHUYET
 		{
 			get
 			{
-				return this._HINHTHUC_HOC;
+				return this._IS_LYTHUYET;
 			}
 			set
 			{
-				if ((this._HINHTHUC_HOC != value))
+				if ((this._IS_LYTHUYET != value))
 				{
-					this.OnHINHTHUC_HOCChanging(value);
+					this.OnIS_LYTHUYETChanging(value);
 					this.SendPropertyChanging();
-					this._HINHTHUC_HOC = value;
-					this.SendPropertyChanged("HINHTHUC_HOC");
-					this.OnHINHTHUC_HOCChanged();
+					this._IS_LYTHUYET = value;
+					this.SendPropertyChanged("IS_LYTHUYET");
+					this.OnIS_LYTHUYETChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TU_HOCKY", DbType="NVarChar(50)")]
-		public string TU_HOCKY
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NAMHOC_HKY_HTAI", DbType="Int")]
+		public System.Nullable<int> ID_NAMHOC_HKY_HTAI
 		{
 			get
 			{
-				return this._TU_HOCKY;
+				return this._ID_NAMHOC_HKY_HTAI;
 			}
 			set
 			{
-				if ((this._TU_HOCKY != value))
+				if ((this._ID_NAMHOC_HKY_HTAI != value))
 				{
-					this.OnTU_HOCKYChanging(value);
+					this.OnID_NAMHOC_HKY_HTAIChanging(value);
 					this.SendPropertyChanging();
-					this._TU_HOCKY = value;
-					this.SendPropertyChanged("TU_HOCKY");
-					this.OnTU_HOCKYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DEN_HOCKY", DbType="NVarChar(50)")]
-		public string DEN_HOCKY
-		{
-			get
-			{
-				return this._DEN_HOCKY;
-			}
-			set
-			{
-				if ((this._DEN_HOCKY != value))
-				{
-					this.OnDEN_HOCKYChanging(value);
-					this.SendPropertyChanging();
-					this._DEN_HOCKY = value;
-					this.SendPropertyChanged("DEN_HOCKY");
-					this.OnDEN_HOCKYChanged();
+					this._ID_NAMHOC_HKY_HTAI = value;
+					this.SendPropertyChanged("ID_NAMHOC_HKY_HTAI");
+					this.OnID_NAMHOC_HKY_HTAIChanged();
 				}
 			}
 		}
@@ -3952,27 +3928,25 @@ namespace DATN.DATA
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_HP_THAMSO")]
-	public partial class tbl_HP_THAMSO : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_HP_DOTDK")]
+	public partial class tbl_HP_DOTDK : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ID_THAMSO;
+		private int _ID_DOTDK;
 		
-		private System.Nullable<int> _ID_HOCKY_NAMHOC;
+		private System.Nullable<int> _ID_NAMHOC_HKY_HTAI;
+		
+		private System.Nullable<int> _ID_HE_DAOTAO;
 		
 		private string _MA_DOT_DK;
 		
-		private System.Nullable<int> _TEN_DOT_DK;
+		private string _TEN_DOT_DK;
 		
 		private System.Nullable<System.DateTime> _NGAY_BDAU;
 		
 		private System.Nullable<System.DateTime> _NGAY_KTHUC;
-		
-		private string _GIO_BDAU;
-		
-		private string _GIO_KTHUC;
 		
 		private string _CREATE_USER;
 		
@@ -3988,22 +3962,20 @@ namespace DATN.DATA
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnID_THAMSOChanging(int value);
-    partial void OnID_THAMSOChanged();
-    partial void OnID_HOCKY_NAMHOCChanging(System.Nullable<int> value);
-    partial void OnID_HOCKY_NAMHOCChanged();
+    partial void OnID_DOTDKChanging(int value);
+    partial void OnID_DOTDKChanged();
+    partial void OnID_NAMHOC_HKY_HTAIChanging(System.Nullable<int> value);
+    partial void OnID_NAMHOC_HKY_HTAIChanged();
+    partial void OnID_HE_DAOTAOChanging(System.Nullable<int> value);
+    partial void OnID_HE_DAOTAOChanged();
     partial void OnMA_DOT_DKChanging(string value);
     partial void OnMA_DOT_DKChanged();
-    partial void OnTEN_DOT_DKChanging(System.Nullable<int> value);
+    partial void OnTEN_DOT_DKChanging(string value);
     partial void OnTEN_DOT_DKChanged();
     partial void OnNGAY_BDAUChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAY_BDAUChanged();
     partial void OnNGAY_KTHUCChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAY_KTHUCChanged();
-    partial void OnGIO_BDAUChanging(string value);
-    partial void OnGIO_BDAUChanged();
-    partial void OnGIO_KTHUCChanging(string value);
-    partial void OnGIO_KTHUCChanged();
     partial void OnCREATE_USERChanging(string value);
     partial void OnCREATE_USERChanged();
     partial void OnUPDATE_USERChanging(string value);
@@ -4016,52 +3988,72 @@ namespace DATN.DATA
     partial void OnISDELETEChanged();
     #endregion
 		
-		public tbl_HP_THAMSO()
+		public tbl_HP_DOTDK()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_THAMSO", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_THAMSO
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DOTDK", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_DOTDK
 		{
 			get
 			{
-				return this._ID_THAMSO;
+				return this._ID_DOTDK;
 			}
 			set
 			{
-				if ((this._ID_THAMSO != value))
+				if ((this._ID_DOTDK != value))
 				{
-					this.OnID_THAMSOChanging(value);
+					this.OnID_DOTDKChanging(value);
 					this.SendPropertyChanging();
-					this._ID_THAMSO = value;
-					this.SendPropertyChanged("ID_THAMSO");
-					this.OnID_THAMSOChanged();
+					this._ID_DOTDK = value;
+					this.SendPropertyChanged("ID_DOTDK");
+					this.OnID_DOTDKChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HOCKY_NAMHOC", DbType="Int")]
-		public System.Nullable<int> ID_HOCKY_NAMHOC
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NAMHOC_HKY_HTAI", DbType="Int")]
+		public System.Nullable<int> ID_NAMHOC_HKY_HTAI
 		{
 			get
 			{
-				return this._ID_HOCKY_NAMHOC;
+				return this._ID_NAMHOC_HKY_HTAI;
 			}
 			set
 			{
-				if ((this._ID_HOCKY_NAMHOC != value))
+				if ((this._ID_NAMHOC_HKY_HTAI != value))
 				{
-					this.OnID_HOCKY_NAMHOCChanging(value);
+					this.OnID_NAMHOC_HKY_HTAIChanging(value);
 					this.SendPropertyChanging();
-					this._ID_HOCKY_NAMHOC = value;
-					this.SendPropertyChanged("ID_HOCKY_NAMHOC");
-					this.OnID_HOCKY_NAMHOCChanged();
+					this._ID_NAMHOC_HKY_HTAI = value;
+					this.SendPropertyChanged("ID_NAMHOC_HKY_HTAI");
+					this.OnID_NAMHOC_HKY_HTAIChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MA_DOT_DK", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HE_DAOTAO", DbType="Int")]
+		public System.Nullable<int> ID_HE_DAOTAO
+		{
+			get
+			{
+				return this._ID_HE_DAOTAO;
+			}
+			set
+			{
+				if ((this._ID_HE_DAOTAO != value))
+				{
+					this.OnID_HE_DAOTAOChanging(value);
+					this.SendPropertyChanging();
+					this._ID_HE_DAOTAO = value;
+					this.SendPropertyChanged("ID_HE_DAOTAO");
+					this.OnID_HE_DAOTAOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MA_DOT_DK", DbType="NVarChar(MAX)")]
 		public string MA_DOT_DK
 		{
 			get
@@ -4081,8 +4073,8 @@ namespace DATN.DATA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEN_DOT_DK", DbType="Int")]
-		public System.Nullable<int> TEN_DOT_DK
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEN_DOT_DK", DbType="NVarChar(MAX)")]
+		public string TEN_DOT_DK
 		{
 			get
 			{
@@ -4101,7 +4093,7 @@ namespace DATN.DATA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_BDAU", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_BDAU", DbType="DateTime")]
 		public System.Nullable<System.DateTime> NGAY_BDAU
 		{
 			get
@@ -4121,7 +4113,7 @@ namespace DATN.DATA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_KTHUC", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_KTHUC", DbType="DateTime")]
 		public System.Nullable<System.DateTime> NGAY_KTHUC
 		{
 			get
@@ -4137,46 +4129,6 @@ namespace DATN.DATA
 					this._NGAY_KTHUC = value;
 					this.SendPropertyChanged("NGAY_KTHUC");
 					this.OnNGAY_KTHUCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIO_BDAU", DbType="NVarChar(50)")]
-		public string GIO_BDAU
-		{
-			get
-			{
-				return this._GIO_BDAU;
-			}
-			set
-			{
-				if ((this._GIO_BDAU != value))
-				{
-					this.OnGIO_BDAUChanging(value);
-					this.SendPropertyChanging();
-					this._GIO_BDAU = value;
-					this.SendPropertyChanged("GIO_BDAU");
-					this.OnGIO_BDAUChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIO_KTHUC", DbType="NVarChar(50)")]
-		public string GIO_KTHUC
-		{
-			get
-			{
-				return this._GIO_KTHUC;
-			}
-			set
-			{
-				if ((this._GIO_KTHUC != value))
-				{
-					this.OnGIO_KTHUCChanging(value);
-					this.SendPropertyChanging();
-					this._GIO_KTHUC = value;
-					this.SendPropertyChanged("GIO_KTHUC");
-					this.OnGIO_KTHUCChanged();
 				}
 			}
 		}
@@ -4302,15 +4254,15 @@ namespace DATN.DATA
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_HP_THAMSO_HPDK")]
-	public partial class tbl_HP_THAMSO_HPDK : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_HP_DOTDK_CTIET")]
+	public partial class tbl_HP_DOTDK_CTIET : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ID_THAMSO_HOCPHAN;
+		private int _ID_DOTDK_CTIET;
 		
-		private System.Nullable<int> _ID_THAMSO;
+		private System.Nullable<int> _ID_DOTDK;
 		
 		private System.Nullable<int> _ID_LOPHOCPHAN;
 		
@@ -4328,10 +4280,10 @@ namespace DATN.DATA
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnID_THAMSO_HOCPHANChanging(int value);
-    partial void OnID_THAMSO_HOCPHANChanged();
-    partial void OnID_THAMSOChanging(System.Nullable<int> value);
-    partial void OnID_THAMSOChanged();
+    partial void OnID_DOTDK_CTIETChanging(int value);
+    partial void OnID_DOTDK_CTIETChanged();
+    partial void OnID_DOTDKChanging(System.Nullable<int> value);
+    partial void OnID_DOTDKChanged();
     partial void OnID_LOPHOCPHANChanging(System.Nullable<int> value);
     partial void OnID_LOPHOCPHANChanged();
     partial void OnCREATE_USERChanging(string value);
@@ -4346,47 +4298,47 @@ namespace DATN.DATA
     partial void OnIS_DELETEChanged();
     #endregion
 		
-		public tbl_HP_THAMSO_HPDK()
+		public tbl_HP_DOTDK_CTIET()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_THAMSO_HOCPHAN", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_THAMSO_HOCPHAN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DOTDK_CTIET", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_DOTDK_CTIET
 		{
 			get
 			{
-				return this._ID_THAMSO_HOCPHAN;
+				return this._ID_DOTDK_CTIET;
 			}
 			set
 			{
-				if ((this._ID_THAMSO_HOCPHAN != value))
+				if ((this._ID_DOTDK_CTIET != value))
 				{
-					this.OnID_THAMSO_HOCPHANChanging(value);
+					this.OnID_DOTDK_CTIETChanging(value);
 					this.SendPropertyChanging();
-					this._ID_THAMSO_HOCPHAN = value;
-					this.SendPropertyChanged("ID_THAMSO_HOCPHAN");
-					this.OnID_THAMSO_HOCPHANChanged();
+					this._ID_DOTDK_CTIET = value;
+					this.SendPropertyChanged("ID_DOTDK_CTIET");
+					this.OnID_DOTDK_CTIETChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_THAMSO", DbType="Int")]
-		public System.Nullable<int> ID_THAMSO
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DOTDK", DbType="Int")]
+		public System.Nullable<int> ID_DOTDK
 		{
 			get
 			{
-				return this._ID_THAMSO;
+				return this._ID_DOTDK;
 			}
 			set
 			{
-				if ((this._ID_THAMSO != value))
+				if ((this._ID_DOTDK != value))
 				{
-					this.OnID_THAMSOChanging(value);
+					this.OnID_DOTDKChanging(value);
 					this.SendPropertyChanging();
-					this._ID_THAMSO = value;
-					this.SendPropertyChanged("ID_THAMSO");
-					this.OnID_THAMSOChanged();
+					this._ID_DOTDK = value;
+					this.SendPropertyChanged("ID_DOTDK");
+					this.OnID_DOTDKChanged();
 				}
 			}
 		}

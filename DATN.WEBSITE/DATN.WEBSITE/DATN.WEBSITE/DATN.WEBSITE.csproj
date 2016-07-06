@@ -217,6 +217,14 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\DATN.TTS\trunk\DATN.TTS\DATN.C45\DATN.C45.csproj">
+      <Project>{45ea8095-2fe5-411f-bce9-bc143c65fa23}</Project>
+      <Name>DATN.C45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\DATN.TTS\trunk\DATN.TTS\DATN.ID3\DATN.ID3.csproj">
+      <Project>{42ad59d5-e2e0-4c7a-8550-d6debb326f9b}</Project>
+      <Name>DATN.ID3</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DATN.BUS\DATN.BUS.csproj">
       <Project>{d254adee-e5ee-457d-a388-b2beaff94588}</Project>
       <Name>DATN.BUS</Name>
