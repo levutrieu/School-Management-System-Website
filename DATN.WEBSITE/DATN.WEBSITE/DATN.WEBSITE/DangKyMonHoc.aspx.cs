@@ -316,6 +316,7 @@ namespace DATN.WEBSITE
             {
                 Response.Write("Sai thông tin đăng nhập");
             }
+            LoadGridHocPhan();
         }
 
         protected void btnLuuDangKy_OnClick(object sender, EventArgs e)
@@ -375,6 +376,7 @@ namespace DATN.WEBSITE
                 txtThongbao.Text = "Lưu đăng ký không thành công";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "thongBao();", true);
             }
+            LoadGridHocPhan();
         }
 
         protected void btnHuyDangKy_OnClick(object sender, EventArgs e)
@@ -425,7 +427,7 @@ namespace DATN.WEBSITE
                 txtThongbao.Text = "Hủy đăng ký không thành công";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "thongBao();", true);
             }
-        }
+            LoadGridHocPhan();}
         #endregion
 
         #region ID3
